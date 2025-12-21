@@ -51,15 +51,16 @@ Each successful review advances the problem to the next interval.
 ## Project Structure
 
 cf-recall/
-├── dist/ # Production build (load this in Chrome)
+├── dist/
 │ ├── manifest.json
 │ ├── index.html
 │ ├── assets/
 │ ├── background/
+│ │ └── serviceWorker.js
 │ ├── contentScript.js
 │ └── icons/
 │
-├── src/ # React source code
+├── src/
 │ ├── popup/
 │ └── utils/
 │
