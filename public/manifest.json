@@ -19,7 +19,7 @@
     }
   ],
 
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage","tabs"],
 
   "icons": {
     "128": "/icons/icon.png"

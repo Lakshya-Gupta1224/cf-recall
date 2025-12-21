@@ -1,17 +1,107 @@
-# React + Vite
+# CF Recall
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Spaced Repetition Helper for Codeforces
 
-Currently, two official plugins are available:
+CF Recall is a Chrome extension that helps competitive programmers systematically revisit Codeforces problems using spaced repetition.
+It is designed to prevent forgetting previously solved problems and to improve long-term problem-solving ability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The extension is built using Chrome Extensions (Manifest V3), React, and modern JavaScript tooling.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Add Codeforces problems to a personal revision list
+- Practice problems using spaced repetition intervals
+- Automatically show problems due for revision on the current day
+- Carry forward missed or overdue problems
+- Mark problems as reviewed to schedule the next revision
+- Maintain revision history for each problem
+- Add problems directly from Codeforces problem pages
+- Persistent local storage using the Chrome Storage API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# identity-check
+---
+
+## Spaced Repetition Strategy
+
+Problems are scheduled using increasing review intervals:
+
+- 1 day
+- 3 days
+- 7 days
+- 14 days
+- 30 days
+- 60 days
+
+Each successful review advances the problem to the next interval.
+
+---
+
+## Tech Stack
+
+- Chrome Extensions (Manifest V3)
+- React
+- Vite
+- JavaScript (ES6+)
+- Bulma CSS
+- Chrome Storage API
+
+---
+
+## Project Structure
+
+cf-recall/
+├── dist/ # Production build (load this in Chrome)
+│ ├── manifest.json
+│ ├── index.html
+│ ├── assets/
+│ ├── background/
+│ ├── contentScript.js
+│ └── icons/
+│
+├── src/ # React source code
+│ ├── popup/
+│ └── utils/
+│
+├── public/
+├── package.json
+└── README.md
+
+---
+
+## Local Development
+
+### Install dependencies
+
+npm install
+
+### Build the extension
+
+npm run build
+
+### Load in Chrome
+
+1. Open chrome://extensions
+2. Enable Developer Mode
+3. Click Load unpacked
+4. Select the dist/ directory
+
+---
+
+## Permissions
+
+storage - Store problems and revision data locally
+
+The extension does not collect personal data or communicate with external servers.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Lakshya
