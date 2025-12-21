@@ -50,22 +50,7 @@ Each successful review advances the problem to the next interval.
 
 ## Project Structure
 
-cf-recall/
-├── dist/ # Production build (load this in Chrome)
-│ ├── manifest.json
-│ ├── index.html
-│ ├── assets/
-│ ├── background/
-│ ├── contentScript.js
-│ └── icons/
-│
-├── src/ # React source code
-│ ├── popup/
-│ └── utils/
-│
-├── public/
-├── package.json
-└── README.md
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/d596b86c-0335-4ab1-a700-1405e5604238" />
 
 ---
 
