@@ -50,26 +50,23 @@ Each successful review advances the problem to the next interval.
 
 ## Project Structure
 
+```text
 cf-recall/
-├── dist/
-│ ├── manifest.json
-│ ├── index.html
-│ ├── assets/
-│ ├── background/
-│ │ └── serviceWorker.js
-│ ├── contentScript.js
-│ └── icons/
-│
-├── src/
-│ ├── popup/
-│ └── utils/
-│
-├── public/
-├── package.json
+├── dist/                # Compiled extension (Load this into Chrome)
+│   ├── manifest.json
+│   ├── index.html
+│   ├── assets/
+│   ├── background/
+│   │   └── serviceWorker.js
+│   ├── contentScript.js
+│   └── icons/
+├── src/                 # Source code (React components)
+│   ├── popup/           # UI for the extension bubble
+│   └── utils/           # Shared logic (storage, dates, etc.)
+├── public/              # Static assets (copied to dist)
+├── package.json         # Dependencies and scripts
 └── README.md
-
----
-
+```
 ## Local Development
 
 ### Install dependencies
