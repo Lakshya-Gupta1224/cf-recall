@@ -1,16 +1,20 @@
 @media (prefers-color-scheme: dark) {
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-  }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0);
-  }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(0);
+    }
 }
 
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
+}
+
+.tabs ul {
+    border-bottom: none;
 }
