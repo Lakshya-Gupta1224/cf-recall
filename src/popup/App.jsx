@@ -1,5 +1,5 @@
 import TodayList from "./components/TodayList.jsx";
-import AddProblem from "./components/AddProblem.jsx";
+import AddNewProblem from "./components/AddProblem.jsx";
 
 function App() {
   return (

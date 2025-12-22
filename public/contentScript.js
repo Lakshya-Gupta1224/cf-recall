@@ -12,7 +12,7 @@
 
   const contestId = match[1];
   const index = match[2];
-  const problemId = `${contestId}${index}`;
+  const problemId = `${contestId}${index}`; // 2119C
 
   const table = document.querySelector("table.rtable");
   if (!table) return;
@@ -43,32 +43,26 @@
   `;
 
   btn.onclick = () => {
-    chrome.storage.local.get(["problems"], (result) => {
-      const problems = result.problems || {};
-
-      if (problems[problemId]) {
-        alert("Problem already added!");
-        return;
+    const problemDetails = {
+      id: problemId,
+      name: problemName,
+      url: window.location.href,
+      intervalIndex: 0,
+      status: "pending",
+    };
+    chrome.runtime.sendMessage(
+      {
+        type: "ADD_PROBLEM",
+        payload: problemDetails,
+      },
+      (response) => {
+        if (response?.status === "SUCCESS") {
+          console.log("Problem added");
+        } else if (response?.status === "DUPLICATE") {
+          console.log("Already added");
+        }
       }
-
-      const today = new Date().toISOString().split("T")[0];
-      let d = new Date(today);
-      d.setDate(d.getDate() + 1);
-      d = d.toISOString().split("T")[0];
-      problems[problemId] = {
-        id: problemId,
-        name: problemName,
-        url: window.location.href,
-        intervalIndex: 0,
-        nextReviewDate: d,
-        history: [{ date: today, action: "added" }],
-        status: "pending",
-      };
-
-      chrome.storage.local.set({ problems }, () => {
-        alert("Problem added to CF Recall");
-      });
-    });
+    );
   };
   td.appendChild(btn);
   tr.appendChild(td);
