@@ -2,9 +2,9 @@ import { loadProblemPage } from "../../../public/utils/loadPage.js";
 
 export default function ProblemItem({ problem, onReview, onDelete }) {
   return (
-    <div className="box">
+    <div className="box pt-3">
       {problem.name}
-      <hr />
+      <hr className="mt-2 mb-2" />
 
       <button
         className="button mr-1 is-info is-small"
