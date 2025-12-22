@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getView, saveView } from "../../public/utils/viewStorage.js";
 import TodayView from "./views/TodayView";
 import LeftoverView from "./views/LeftoverView.jsx";
 import CalendarView from "./views/CalendarView.jsx";
+
 export default function App() {
   const [view, setView] = useState("today");
+
+  // loading pre-saved view
+  useEffect(() => {
+    getView().then((savedView) => {
+      setView(savedView);
+    });
+  }, []);
+
+  // updating view
+  useEffect(() => {
+    if (view) saveView(view);
+  }, [view]);
+
+  if (!view) setView("today");
 
   return (
     <div className="container p-3">

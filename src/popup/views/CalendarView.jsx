@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import { getProblems, saveProblems } from "../../../public/utils/storage";
+import {
+  saveCalendarDate,
+  getCalendarDate,
+} from "../../../public/utils/calendarStorage";
 import { addDays, todayISO } from "../../../public/utils/date";
 import ProblemList from "../components/ProblemList";
 import { SPACED_INTERVALS } from "./TodayView";
 
 export default function CalendarView() {
-  const [selectedDate, setSelectedDate] = useState(todayISO());
+  const [selectedDate, setSelectedDate] = useState(null);
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    getCalendarDate().then((savedDate) => {
+      setSelectedDate(savedDate || todayISO());
+    });
+  }, []);
 
   async function load(date) {
     const problems = await getProblems();
@@ -47,16 +57,19 @@ export default function CalendarView() {
   }
 
   useEffect(() => {
+    if (selectedDate) {
+      saveCalendarDate(selectedDate);
+      load(selectedDate);
+    }
+  }, [selectedDate]);
+
+  useEffect(() => {
     load(selectedDate);
 
     const listener = () => load(selectedDate);
     chrome.storage.onChanged.addListener(listener);
 
     return () => chrome.storage.onChanged.removeListener(listener);
-  }, [selectedDate]);
-
-  useEffect(() => {
-    load(selectedDate);
   }, [selectedDate]);
 
   return (
@@ -69,7 +82,7 @@ export default function CalendarView() {
           id="datePicker"
           type="date"
           className="input is-small mb-3"
-          value={selectedDate}
+          value={selectedDate || todayISO()}
           onChange={(e) => setSelectedDate(e.target.value)}
         />
       </div>
