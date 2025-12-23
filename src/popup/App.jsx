@@ -32,7 +32,10 @@ export default function App() {
 
   return (
     <div className="container p-3">
-      <h1 className="title is-3">CF Recall</h1>
+      <center>
+        <h1 className="title is-3">CF Recall</h1>
+        <hr />
+      </center>
 
       <div className="tabs is-toggle is-toggle-rounded is-small is-fullwidth">
         <ul>

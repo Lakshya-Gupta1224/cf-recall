@@ -1,4 +1,7 @@
 (function () {
+  if (window.__cfRecallInjected) return;
+  window.__cfRecallInjected = true;
+
   if (document.getElementById("cf-recall-btn")) return;
 
   const titleEl = document.querySelector(".problem-statement .title");
@@ -58,21 +61,24 @@
     }
   });
 
-  chrome.storage.onChanged.addListener((changes, areaName) => {
-    if (areaName !== "local") return;
-    if (!changes.problems) return;
+  if (!window.__cfRecallStorageListener) {
+    chrome.storage.onChanged.addListener((changes, areaName) => {
+      if (areaName !== "local") return;
+      if (!changes.problems) return;
 
-    const oldP = changes.problems.oldValue || {};
-    const newP = changes.problems.newValue || {};
+      const oldP = changes.problems.oldValue || {};
+      const newP = changes.problems.newValue || {};
 
-    if (!oldP[problemId] && newP[problemId]) {
-      markAdded(true);
-    }
+      if (!oldP[problemId] && newP[problemId]) {
+        markAdded(true);
+      }
 
-    if (oldP[problemId] && !newP[problemId]) {
-      markAdded(false);
-    }
-  });
+      if (oldP[problemId] && !newP[problemId]) {
+        markAdded(false);
+      }
+    });
+    window.__cfRecallStorageListener = true;
+  }
 
   btn.onclick = () => {
     const problemDetails = {

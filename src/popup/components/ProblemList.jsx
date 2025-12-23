@@ -3,7 +3,7 @@ import ProblemItem from "./ProblemItem.jsx";
 export default function ProblemList({ view, problems, onReview, onDelete }) {
   if (problems.length === 0) {
     if (view === "todayView") {
-      return <p>No problems for today.</p>;
+      return <p>You’re done for today!<br />Check leftovers or future dates.</p>;
     }
     if (view === "leftoverView") {
       return <p>No leftover problems.</p>;
