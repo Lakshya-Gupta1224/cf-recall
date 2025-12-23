@@ -28,7 +28,7 @@
   td.class = "left";
   td.colspan = "1";
 
-  const btn = document.createElement("button");
+  let btn = document.createElement("button");
   btn.id = "cf-recall-btn";
   btn.innerHTML = "Add to CF Recall";
 
@@ -41,6 +41,38 @@
   cursor: pointer;
   font-size: 12px;
   `;
+
+  function markAdded(alreadyExists = false) {
+    btn.innerHTML = alreadyExists
+      ? "Already in CF Recall"
+      : "Added to CF Recall";
+
+    btn.disabled = alreadyExists;
+    btn.style.background = alreadyExists ? "#48c78e" : "#3273dc";
+    btn.style.cursor = alreadyExists ? "default" : "pointer";
+  }
+
+  chrome.storage.local.get(["problems"], (res) => {
+    if (res.problems && res.problems[problemId]) {
+      markAdded(true);
+    }
+  });
+
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "local") return;
+    if (!changes.problems) return;
+
+    const oldP = changes.problems.oldValue || {};
+    const newP = changes.problems.newValue || {};
+
+    if (!oldP[problemId] && newP[problemId]) {
+      markAdded(true);
+    }
+
+    if (oldP[problemId] && !newP[problemId]) {
+      markAdded(false);
+    }
+  });
 
   btn.onclick = () => {
     const problemDetails = {
@@ -57,8 +89,10 @@
       },
       (response) => {
         if (response?.status === "SUCCESS") {
+          markAdded(true);
           console.log("Problem added");
         } else if (response?.status === "DUPLICATE") {
+          markAdded(true);
           console.log("Already added");
         }
       }
