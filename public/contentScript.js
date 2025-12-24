@@ -48,7 +48,7 @@
   function markAdded(alreadyExists = false) {
     btn.innerHTML = alreadyExists
       ? "Already in CF Recall"
-      : "Added to CF Recall";
+      : "Add to CF Recall";
 
     btn.disabled = alreadyExists;
     btn.style.background = alreadyExists ? "#48c78e" : "#3273dc";
