@@ -11,6 +11,7 @@ import { SPACED_INTERVALS } from "./TodayView";
 export default function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [list, setList] = useState([]);
+  const [checkboxState, setCheckboxState] = useState(false);
 
   useEffect(() => {
     getCalendarDate().then((savedDate) => {
@@ -20,13 +21,26 @@ export default function CalendarView() {
 
   async function load(date) {
     const problems = await getProblems();
-
-    const filtered = Object.values(problems).filter(
-      (p) => p.status === "pending" && p.nextReviewDate === date
-    );
-
+    let filtered;
+    if (checkboxState === false) {
+      filtered = Object.values(problems).filter(
+        (p) => p.status === "pending" && p.nextReviewDate === date
+      );
+    } else {
+      filtered = Object.values(problems).filter(
+        (p) => p.status === "pending" && p.nextReviewDate >= date
+      );
+    }
     setList(filtered);
   }
+
+  const handleCheckboxChange = (isChecked) => {
+    setCheckboxState(isChecked);
+  };
+
+  useEffect(() => {
+    load(selectedDate);
+  }, [checkboxState]);
 
   async function markReviewed(problem) {
     const problems = await getProblems();
@@ -56,16 +70,9 @@ export default function CalendarView() {
     );
   }
 
+  // when date is selected and changed
   useEffect(() => {
-    if (selectedDate) {
-      saveCalendarDate(selectedDate);
-      load(selectedDate);
-    }
-  }, [selectedDate]);
-
-  useEffect(() => {
-    load(selectedDate);
-
+    saveCalendarDate(selectedDate);
     const listener = () => load(selectedDate);
     chrome.storage.onChanged.addListener(listener);
 
@@ -85,10 +92,26 @@ export default function CalendarView() {
           value={selectedDate || todayISO()}
           onChange={(e) => setSelectedDate(e.target.value)}
         />
+        <div className="field">
+          <label
+            htmlFor="showUpcomingCheckbox"
+            className="checkbox is-flex is-align-items-center"
+          >
+            <input
+              type="checkbox"
+              checked={checkboxState}
+              id="showUpcomingCheckbox"
+              className="mr-2"
+              onChange={(e) => handleCheckboxChange(e.target.checked)}
+            />
+            <span>Show upcoming problems from this date</span>
+          </label>
+        </div>
       </div>
 
       <ProblemList
         view="calendarView"
+        showAllUpcoming={checkboxState}
         problems={list}
         onReview={markReviewed}
         onDelete={deleteProblem}

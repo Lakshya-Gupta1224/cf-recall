@@ -18,3 +18,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tabs ul {
     border-bottom: none;
 }
+
+.cf-tabs a {
+    padding: 0.4rem 0.75rem;
+}
+
+.cf-tabs .tab-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.cf-tabs .tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 16px;
+    height: 16px;
+    padding: 0 5px;
+
+    font-size: 0.65rem;
+    line-height: 1;
+    border-radius: 9999px;
+
+    color: #fff;
+}
+
+.cf-tabs .tab-badge.is-success {
+  background-color: #4caf6a;
+  border: 1px solid #3e9a5f;
+  color: #ffffff;
+}
+
+.cf-tabs .tab-badge.is-danger {
+  background-color: #e06a6a;
+  border: 1px solid #c95454;
+  color: #ffffff;
+}
+
+.tabs.is-toggle.cf-tabs li.is-active a {
+  background-color: #1f5fbf;
+  border-color: #9bb8e8;
+  color: #ffffff;
+}

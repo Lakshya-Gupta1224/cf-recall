@@ -96,10 +96,10 @@
       (response) => {
         if (response?.status === "SUCCESS") {
           markAdded(true);
-          console.log("Problem added");
+          // console.log("Problem added");
         } else if (response?.status === "DUPLICATE") {
           markAdded(true);
-          console.log("Already added");
+          // console.log("Already added");
         }
       }
     );

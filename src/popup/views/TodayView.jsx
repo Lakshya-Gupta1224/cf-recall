@@ -8,7 +8,7 @@ export const SPACED_INTERVALS = [1, 3, 7, 14, 30, 60];
 
 export default function TodayView() {
   const [selectedDate, setSelectedDate] = useState(todayISO());
-  console.log("selectedDate todayView: ", selectedDate);
+  // console.log("selectedDate todayView: ", selectedDate);
   const { list, reload } = useProblems((problems) =>
     problems.filter(
       (p) => p.status === "pending" && p.nextReviewDate === selectedDate
