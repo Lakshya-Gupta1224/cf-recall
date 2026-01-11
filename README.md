@@ -102,4 +102,4 @@ MIT License
 
 ## Author
 
-Lakshya
+Lakshya Gupta
