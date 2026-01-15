@@ -45,7 +45,7 @@ export default function TodayView() {
 
   return (
     <>
-      <h2 className="subtitle is-6">Today's Problems</h2>
+      <h2 className="subtitle is-6 has-text-weight-light">Today's Problems</h2>
 
       <ProblemList
         view="todayView"

@@ -82,7 +82,7 @@ export default function CalendarView() {
   return (
     <>
       <div className="field">
-        <label htmlFor="datePicker" className="label">
+        <label htmlFor="datePicker" className="label subtitle is-6">
           Select date
         </label>
         <input
@@ -104,7 +104,7 @@ export default function CalendarView() {
               className="mr-2"
               onChange={(e) => handleCheckboxChange(e.target.checked)}
             />
-            <span>Show upcoming problems from this date</span>
+            <h6 className="has-text-weight-light subtitle is-6">Show upcoming problems from this date</h6>
           </label>
         </div>
       </div>

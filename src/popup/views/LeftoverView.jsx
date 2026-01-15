@@ -44,7 +44,7 @@ export default function LeftoverView() {
 
   return (
     <>
-      <h2 className="subtitle is-6">Leftover Problems</h2>
+      <h2 className="subtitle is-6 has-text-weight-light">Leftover Problems</h2>
 
       <ProblemList
       view="leftoverView"
