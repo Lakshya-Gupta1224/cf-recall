@@ -10,11 +10,25 @@
   const problemName = titleEl.innerText.trim();
 
   // /problemset/problem/1791/F
-  const match = window.location.pathname.match(/problem\/(\d+)\/([A-Z0-9]+)/);
-  if (!match) return;
+  function extractProblemFromPath(pathname) {
+    // Case 1: /problemset/problem/2179/A
+    let match = pathname.match(/^\/problemset\/problem\/(\d+)\/([A-Z0-9]+)$/);
+    if (match) {
+      return { contestId: match[1], index: match[2] };
+    }
 
-  const contestId = match[1];
-  const index = match[2];
+    // Case 2: /contest/2117/problem/A
+    match = pathname.match(/^\/contest\/(\d+)\/problem\/([A-Z0-9]+)$/);
+    if (match) {
+      return { contestId: match[1], index: match[2] };
+    }
+
+    return null;
+  }
+  const extracted = extractProblemFromPath(window.location.pathname);
+  if (!extracted) return;
+
+  const { contestId, index } = extracted;
   const problemId = `${contestId}${index}`; // 2119C
 
   const table = document.querySelector("table.rtable");
@@ -46,9 +60,7 @@
   `;
 
   function markAdded(alreadyExists = false) {
-    btn.innerHTML = alreadyExists
-      ? "Already in CF Recall"
-      : "Add to CF Recall";
+    btn.innerHTML = alreadyExists ? "Already in CF Recall" : "Add to CF Recall";
 
     btn.disabled = alreadyExists;
     btn.style.background = alreadyExists ? "#48c78e" : "#3273dc";
