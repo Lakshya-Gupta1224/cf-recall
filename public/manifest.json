@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "CF Recall",
-  "description": "Practice Codeforces problems using spaced repetition",
+  "name": "CF & LC Recall",
+  "description": "Practice Codeforces and Leetcode problems using spaced repetition technique.",
   "version": "0.1",
 
   "action": {
