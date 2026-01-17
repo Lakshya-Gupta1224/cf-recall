@@ -10,12 +10,11 @@ export default function ProblemItem({
     <div className="box pt-2 pl-3 pr-3 pb-3">
       {showAllUpcoming && (
         <div className="columns is-mobile mb-0">
-          <div className="column is-two-thirds">{problem.name}</div>
+          <div className="column is-two-thirds has-text-weight-normal">{problem.name}</div>
           <div className="column is-size-7 has-text-weight-light has-text-right">{problem.nextReviewDate}</div>
-          <hr className="mt-0 mb-2" />
         </div>
       )}
-      {!showAllUpcoming && <div className="mb-2">{problem.name}</div>}
+      {!showAllUpcoming && <div className="mb-2 has-text-weight-normal">{problem.name}</div>}
       <div className="buttons">
         <button
           className="button is-info  is-responsive"
