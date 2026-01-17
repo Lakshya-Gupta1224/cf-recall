@@ -63,3 +63,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-color: #9bb8e8;
   color: #ffffff;
 }
+
+.platform-tag {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: 9999px;
+  line-height: 1;
+  letter-spacing: 0.3px;
+  height: min-content;
+}
+
+.platform-tag.cf {
+  background-color: #2d6bdfef;
+  color: #ffffff;
+}
+
+.platform-tag.lc {
+  background-color: #f8a01bf3;
+  color: #1b1b1b;
+}
