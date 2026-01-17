@@ -19,7 +19,11 @@
         "https://codeforces.com/problemset/problem/*/*",
         "https://codeforces.com/contest/*/problem/*"
       ],
-      "js": ["contentScript.js"]
+      "js": ["/contentScripts/codeforces.js"]
+    },
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["/contentScripts/leetcode.js"]
     }
   ],
 

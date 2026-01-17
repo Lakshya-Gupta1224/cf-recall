@@ -96,6 +96,7 @@
     const problemDetails = {
       id: problemId,
       name: problemName,
+      platform: "codeforces",
       url: window.location.href,
       intervalIndex: 0,
       status: "pending",
