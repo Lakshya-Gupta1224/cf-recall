@@ -23,17 +23,19 @@ export default function App() {
   if (!view) setView("today");
 
   const { list: todayList } = useProblems((problems, today) =>
-    problems.filter((p) => p.status === "pending" && p.nextReviewDate === today)
+    problems.filter(
+      (p) => p.status === "pending" && p.nextReviewDate === today,
+    ),
   );
 
   const { list: leftoverList } = useProblems((problems, today) =>
-    problems.filter((p) => p.status === "pending" && p.nextReviewDate < today)
+    problems.filter((p) => p.status === "pending" && p.nextReviewDate < today),
   );
 
   return (
     <div className="container p-3">
       <center>
-        <h1 className="title is-4 mb-0">CF Recall</h1>
+        <h1 className="title is-4 mb-0">CF & LC Recall</h1>
         <hr className="mt-2 mb-4" />
       </center>
 

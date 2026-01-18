@@ -30,6 +30,6 @@
   "permissions": ["storage", "tabs"],
 
   "icons": {
-    "128": "/icons/icon.png"
+    "128": "/icons/CF_LC_Recall_logo.png"
   }
 }
