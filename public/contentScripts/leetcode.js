@@ -29,7 +29,7 @@
     if (!titleEl) return;
 
     btn.id = "cf-recall-btn";
-    btn.textContent = "Add to CF Recall";
+    btn.textContent = "Add to LC Recall";
 
     btn.style.cssText = `
       margin-left: 12px;
@@ -45,8 +45,8 @@
 
     function markAdded(alreadyExists = false) {
       btn.textContent = alreadyExists
-        ? "Already in CF Recall"
-        : "Add to CF Recall";
+        ? "Already in LC Recall"
+        : "Add to LC Recall";
 
       btn.disabled = alreadyExists;
       btn.style.background = alreadyExists ? "#4caf6a" : "#1f5fbf";
@@ -76,7 +76,7 @@
           !oldP[window.__cfRecallCurrentProblemId] &&
           newP[window.__cfRecallCurrentProblemId]
         ) {
-          btn.textContent = "Already in CF Recall";
+          btn.textContent = "Already in LC Recall";
           btn.disabled = true;
           btn.style.background = "#4caf6a";
           btn.style.cursor="default";
@@ -86,7 +86,7 @@
             oldP[window.__cfRecallCurrentProblemId] &&
             !newP[window.__cfRecallCurrentProblemId]
         ) {
-            btn.textContent = "Add to CF Recall";
+            btn.textContent = "Add to LC Recall";
             btn.disabled = false;
             btn.style.background = "#1f5fbf";
             btn.style.cursor="pointer";

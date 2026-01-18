@@ -12,13 +12,13 @@
   // /problemset/problem/1791/F
   function extractProblemFromPath(pathname) {
     // Case 1: /problemset/problem/2179/A
-    let match = pathname.match(/^\/problemset\/problem\/(\d+)\/([A-Z0-9]+)$/);
+    let match = pathname.match(/^\/problemset\/problem\/(\d+)\/([A-Za-z0-9]+)$/);
     if (match) {
       return { contestId: match[1], index: match[2] };
     }
 
     // Case 2: /contest/2117/problem/A
-    match = pathname.match(/^\/contest\/(\d+)\/problem\/([A-Z0-9]+)$/);
+    match = pathname.match(/^\/contest\/(\d+)\/problem\/([A-Za-z0-9]+)$/);
     if (match) {
       return { contestId: match[1], index: match[2] };
     }

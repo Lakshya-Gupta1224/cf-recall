@@ -1,8 +1,8 @@
-# CF Recall
+# CF & LC Recall
 
 A Spaced Repetition Helper for Codeforces
 
-CF Recall is a Chrome extension that helps competitive programmers systematically revisit Codeforces problems using spaced repetition.
+CF & LC Recall is a Chrome extension that helps competitive programmers systematically revisit Codeforces problems using spaced repetition.
 It is designed to prevent forgetting previously solved problems and to improve long-term problem-solving ability.
 
 The extension is built using Chrome Extensions (Manifest V3), React, and modern JavaScript tooling.
