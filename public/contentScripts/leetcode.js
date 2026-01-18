@@ -34,8 +34,8 @@
     btn.style.cssText = `
       margin-left: 12px;
       padding: 6px 10px;
-      background: #1f5fbf;
-      color: #ffffff;
+      background: #7d7d7d2e;
+      color: #f8a01bf3;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -49,7 +49,8 @@
         : "Add to LC Recall";
 
       btn.disabled = alreadyExists;
-      btn.style.background = alreadyExists ? "#4caf6a" : "#1f5fbf";
+      btn.style.color = alreadyExists ? "#28c244" : "#f8a01bf3";
+      btn.style.background = "#7d7d7d2e";
       btn.style.cursor = alreadyExists ? "default" : "pointer";
     }
 
@@ -78,7 +79,8 @@
         ) {
           btn.textContent = "Already in LC Recall";
           btn.disabled = true;
-          btn.style.background = "#4caf6a";
+          btn.style.color = "#28c244";
+          btn.style.background = "#7d7d7d2e";
           btn.style.cursor="default";
         }
         
@@ -88,7 +90,8 @@
         ) {
             btn.textContent = "Add to LC Recall";
             btn.disabled = false;
-            btn.style.background = "#1f5fbf";
+            btn.style.color = "#f8a01bf3";
+            btn.style.background = "#7d7d7d2e";
             btn.style.cursor="pointer";
         }
       });
